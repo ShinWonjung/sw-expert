@@ -16,21 +16,22 @@ int main()
 		int j = 0;
 		int num = 0;
 		while (1) {
-			for (int g = j; g <= max - j; g++) {
+			for (int g = j; g <= max; g++) {
 				arr[j][g] = ++num;
 			}
 			if (n % 2 == 1 && arr[n / 2][n / 2] != 0) break;
-			for (int g = 1; g <= max - j; g++) {
-				arr[j + g][max - j] = ++num;
+			for (int g = j + 1; g <= max; g++) {
+				arr[g][max] = ++num;
 			}
-			for (int g = 1; g <= max - j; g++) {
-				arr[max - j][max - g] = ++num;
+			for (int g = max - 1; g >= j; g--) {
+				arr[max][g] = ++num;
 			}
-			for (int g = 1; g < max - j; g++) {
-				arr[max - g][j] = ++num;
+			if (n % 2 == 0 && arr[n / 2 - 1][n / 2] != 0) break;
+			for (int g = max - 1; g > j; g--) {
+				arr[g][j] = ++num;
 			}
-			if (n % 2 == 0 && arr[n / 2 - 1][n / 2] == 0) break;
 			j++;
+			max--;
 		}
 		num = 0;
 		for (int g = 0; g < n; g++) {
