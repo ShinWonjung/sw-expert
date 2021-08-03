@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
 	//freopen("input.txt", "r", stdin);
+	ios::sync_with_stdio(false); cin.tie(NULL);
 	int test;
 	cin >> test;
 	for (int t = 0; t < test; t++) {
