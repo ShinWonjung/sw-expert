@@ -1,36 +1,28 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-int main()
-{
-	int test;
-	cin >> test;
-	vector<int> arr;
-	int cnt = 0;
-	for (int t = 0; t < test; t++) {
-		int n;
-		cin >> n;
-		arr.push_back(-1);
-		cnt++;
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= i; j++) {
-				if (j == 1 || j == i) arr.push_back(1);
-				else {
-					arr.push_back(arr[cnt - i - 1] + arr[cnt - i]);
-				}
-				cnt++;
-			}
-			arr.push_back(0);
-			cnt++;
-		}
-	}
-	int num = 1;
-	for (int i = 0; i < arr.size(); i++) {
-		if (arr[i] == 0) cout << "\n";
-		else if (arr[i] == -1) {
-			cout << '#' << num++ << "\n";
-		}
-		else cout << arr[i] << ' ';
-	}
-	return 0;
+
+int main(void) {
+    int T;
+    cin >> T;
+    for (int i = 1; i <= T; i++) {
+        int N;
+        cin >> N;
+
+        cout << "#" << i << '\n';
+
+        int d[12] = { 0, };
+        int past[12] = { 0, };
+        past[1] = 1;
+        for (int j = 1; j <= N; j++) {
+            for (int k = 1; k <= j; k++) {
+                d[k] = past[k - 1] + past[k];
+            }
+            for (int k = 1; k <= j; k++) {
+                past[k] = d[k];
+                cout << d[k] << " ";
+            }
+            cout << '\n';
+        }
+    }
+    return 0;
 }
